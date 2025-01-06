@@ -1,14 +1,11 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder
 import pickle
 
 
 regressor = pickle.load(open('new_forest_regressor.pkl', 'rb'))
 
-le = LabelEncoder()
-le = pickle.load(open('le.pkl', 'rb'))
 
 def show_predict_page():
     st.title('Taxi Fare Prediction')
@@ -41,4 +38,3 @@ def show_predict_page():
         prediction = regressor.predict(x)
         st.subheader(f"Taxi fare : ${np.round(prediction, 2)}")
 
-        
